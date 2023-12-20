@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.edu.ifrs.modelo;
+import br.edu.ifrs.util.Conexao;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,6 +49,149 @@ public class Usuarios {
         this.senha = senha;
     }
     
+    public Usuarios(){
+        
+    }
+    
+    public void inserir() throws Exception{
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try{
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("insert into usuarios(cpf, nome, data_nascimento, "
+                    + "email, telefone, whats, username, senha) values (?, ?, ?, "
+                    + "?, ?, ?, ?, ?)");
+            
+            p.setString(1, this.cpf);
+            p.setString(2, this.nome);
+            p.setDate(3, this.data_nascimento);
+            p.setString(4, this.email);
+            p.setString(5, this.telefone);
+            p.setInt(6, this.whats);
+            p.setString(7, this.username);
+            p.setString(8, this.senha);
+                      
+            p.execute();
+        } catch(Exception e){
+            throw new Exception("Falha ao executar o comando.");
+        } finally {
+            if(p != null) p.close();
+            if(con != null) con.close();
+        }
+        
+    }
+    
+    public void atualizar() throws Exception {
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try {
+            con = Conexao.pegarConexao();
+            p = con.prepareStatement("update usuarios set nome = ?, data_nascimento = ? "
+                    + "email = ?, telefone = ?, whats = ?, username = ?, senha = ? where cpf = ?");
+                   
+            
+            p.setString(1, this.nome);
+            p.setDate(2, this.data_nascimento);
+            p.setString(3, this.email);
+            p.setString(4, this.telefone);
+            p.setInt(5, this.whats);
+            p.setString(6, this.username);
+            p.setString(7, this.senha);
+            p.setString(8, this.telefone);
+            p.setInt(9, this.whats);
+                      
+            
+             p.execute();
+        } catch(Exception e){
+            throw new Exception("Falha ao executar o comando.");
+        } finally {
+            if(p != null) p.close();
+            if(con != null) con.close();
+        }
+    }
+    
+    public Usuarios[] selecionar() {
+        Connection con = null;
+        PreparedStatement p = null;
+        List<Usuarios> lista = new ArrayList();
+        
+        try {
+            con = Conexao.pegarConexao();
+            p = con.prepareStatement("select * from usuarios");
+            
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                Usuarios u = new Usuarios();
+                                
+                u.setCpf(rs.getString("cpf"));
+                u.setNome(rs.getString("nome"));
+                u.setData_nascimento(rs.getDate("data_nascimento"));
+                u.setEmail(rs.getString("email"));
+                u.setTelefone(rs.getString("telefone"));
+                u.setWhats(rs.getInt("whats"));
+                u.setUsername(rs.getString("username"));
+                u.setSenha(rs.getString("senha"));
+                                
+                lista.add(u);
+            }
+             
+        } catch(Exception e){
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return lista.toArray(new Usuarios[0]);
+    }
+    
+    public void selecionarCpf() {
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try {
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("select * from usuarios where cpf = ?");
+                        
+            p.setString(1, this.cpf);
+            
+            ResultSet rs = p.executeQuery();
+            if (rs.next()) {
+                this.setCpf(rs.getString("cpf"));
+                this.setNome(rs.getString("nome"));
+                this.setData_nascimento(rs.getDate("data_nascimento"));
+                this.setEmail(rs.getString("email"));
+                this.setTelefone(rs.getString("telefone"));
+                this.setWhats(rs.getInt("whats"));
+                this.setUsername(rs.getString("username"));
+                this.setSenha(rs.getString("senha"));  
+            }
+            
+            rs.close();
+            p.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void excluir() {
+        Connection con = null;
+        PreparedStatement p = null;
+        try {
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("delete from usuarios where cpf = ?");
+                        
+            p.setString(1, this.cpf);
+           
+            p.execute();           
+            p.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
     
