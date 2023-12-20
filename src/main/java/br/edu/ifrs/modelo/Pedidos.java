@@ -122,7 +122,7 @@ public class Pedidos {
             }
              
         } catch(Exception e){
-            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, e);
         }
         return lista.toArray(new Pedidos[0]);
     }
@@ -152,7 +152,7 @@ public class Pedidos {
             p.close();
             con.close();
         } catch (Exception ex) {
-            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -170,7 +170,7 @@ public class Pedidos {
             p.close();
             con.close();
         } catch (Exception ex) {
-            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pedidos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

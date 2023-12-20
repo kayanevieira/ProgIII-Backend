@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class Clientes {
     private int id;
     private String nome;
-    private Date data_nascimento;
+    private int data_nascimento;
     private String cpf;
     private String rg;
     private String orgao_emissor;
@@ -35,7 +35,7 @@ public class Clientes {
     private String estado;
     private String cep;
 
-    public Clientes(String nome, Date data_nascimento, String cpf, String sexo, String email, String telefone) {
+    public Clientes(String nome, int data_nascimento, String cpf, String sexo, String email, String telefone) {
         this.nome = nome;
         this.data_nascimento = data_nascimento;
         this.cpf = cpf;
@@ -52,7 +52,7 @@ public class Clientes {
         this.cep = "";
     }
 
-    public Clientes(int id, String nome, Date data_nascimento, String cpf, String rg, String orgao_emissor, String sexo, String email, String telefone, int whats, String logradouro, String numero, String bairro, String cidade, String estado, String cep) {
+    public Clientes(int id, String nome, int data_nascimento, String cpf, String rg, String orgao_emissor, String sexo, String email, String telefone, int whats, String logradouro, String numero, String bairro, String cidade, String estado, String cep) {
         this.id = id;
         this.nome = nome;
         this.data_nascimento = data_nascimento;
@@ -88,7 +88,7 @@ public class Clientes {
                     + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                         
             p.setString(1, this.nome);
-            p.setDate(2, this.data_nascimento);
+            p.setInt(2, this.data_nascimento);
             p.setString(3, this.cpf);
             p.setString(4, this.rg);
             p.setString(5, this.orgao_emissor);
@@ -125,7 +125,7 @@ public class Clientes {
             
             
             p.setString(1, this.nome);
-            p.setDate(2, this.data_nascimento);
+            p.setInt(2, this.data_nascimento);
             p.setString(3, this.cpf);
             p.setString(4, this.rg);
             p.setString(5, this.orgao_emissor);
@@ -164,7 +164,7 @@ public class Clientes {
                 Clientes c = new Clientes();
                 
                 c.setNome(rs.getString("nome"));
-                c.setData_nascimento(rs.getDate("data_nascimento"));
+                c.setData_nascimento(rs.getInt("data_nascimento"));
                 c.setCpf(rs.getString("cpf"));
                 c.setRg(rs.getString("rg"));
                 c.setOrgao_emissor(rs.getString("orgao_emissor"));
@@ -202,7 +202,7 @@ public class Clientes {
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
                 this.setNome(rs.getString("nome"));
-                this.setData_nascimento(rs.getDate("data_nascimento"));
+                this.setData_nascimento(rs.getInt("data_nascimento"));
                 this.setCpf(rs.getString("cpf"));
                 this.setRg(rs.getString("rg"));
                 this.setOrgao_emissor(rs.getString("orgao_emissor"));
@@ -276,14 +276,14 @@ public class Clientes {
     /**
      * @return the data_nascimento
      */
-    public Date getData_nascimento() {
+    public int getData_nascimento() {
         return data_nascimento;
     }
 
     /**
      * @param data_nascimento the data_nascimento to set
      */
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(int data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
