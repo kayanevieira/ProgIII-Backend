@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package br.edu.ifrs.modelo;
+import br.edu.ifrs.util.Conexao;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +39,140 @@ public class Pedidos {
         this.clientes_id = clientes_id;
     }
     
+    public Pedidos(){
+        
+    }
+    
+    public void inserir() throws Exception{
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try{
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("insert into pedidos(numero, data_emissao, valor_frete, "
+                    + "data_entrega, clientes_id) values (?, ?, ?, ?, ?)");
+                        
+            p.setInt(1, this.numero);
+            p.setDate(2, this.data_emissao);
+            p.setFloat(3, this.valor_frete);
+            p.setDate(4, this.data_entrega);
+            p.setInt(5, this.clientes_id);
+            
+            
+            p.execute();
+        } catch(Exception e){
+            throw new Exception("Falha ao executar o comando.");
+        } finally {
+            if(p != null) p.close();
+            if(con != null) con.close();
+        }
+        
+    }
+    
+    public void atualizar() throws Exception {
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try {
+            con = Conexao.pegarConexao();
+            p = con.prepareStatement("update pedidos set numero = ?, data_emissao = ?, valor_frete = ? "
+                    + "data_entrega = ?, clientes_id = ? where numero = ?");
+            
+            
+            
+            p.setDate(1, this.data_emissao);
+            p.setFloat(2, this.valor_frete);
+            p.setDate(3, this.data_entrega);
+            p.setInt(4, this.clientes_id);
+            p.setInt(5, this.numero);
+            
+            
+             p.execute();
+        } catch(Exception e){
+            throw new Exception("Falha ao executar o comando.");
+        } finally {
+            if(p != null) p.close();
+            if(con != null) con.close();
+        }
+    }
+    
+    public Pedidos[] selecionar() {
+        Connection con = null;
+        PreparedStatement p = null;
+        List<Pedidos> lista = new ArrayList();
+        
+        try {
+            con = Conexao.pegarConexao();
+            p = con.prepareStatement("select * from pedidos");
+            
+            ResultSet rs = p.executeQuery();
+            while(rs.next()){
+                Pedidos pedidos = new Pedidos();
+                
+                pedidos.setNumero(rs.getInt("numero"));
+                pedidos.setData_emissao(rs.getDate("data_emissao"));
+                pedidos.setValor_frete(rs.getFloat("valor_frete"));
+                pedidos.setData_entrega(rs.getDate("data_entrega"));
+                pedidos.setClientes_id(rs.getInt("clientes_id"));
+                
+                
+                
+                lista.add(pedidos);
+            }
+             
+        } catch(Exception e){
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return lista.toArray(new Pedidos[0]);
+    }
+    
+    public void selecionarNumero() {
+        Connection con = null;
+        PreparedStatement p = null;
+        
+        try {
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("select * from pedidos where numero = ?");
+                        
+            p.setInt(1, this.numero);
+            
+            ResultSet rs = p.executeQuery();
+            if (rs.next()) {
+                this.setNumero(rs.getInt("numero"));
+                this.setData_emissao(rs.getDate("data_emissao"));
+                this.setValor_frete(rs.getFloat("valor_frete"));
+                this.setData_entrega(rs.getDate("data_entrega"));
+                this.setClientes_id(rs.getInt("clientes_id"));
+                
+            }
+            
+            rs.close();
+            p.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void excluir() {
+        Connection con = null;
+        PreparedStatement p = null;
+        try {
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("delete from pedidos where numero = ?");
+                        
+            p.setInt(1, this.numero);
+           
+            p.execute();           
+            p.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
 

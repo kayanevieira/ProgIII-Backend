@@ -226,6 +226,23 @@ public class Clientes {
         }
     }
     
+    public void excluir() {
+        Connection con = null;
+        PreparedStatement p = null;
+        try {
+            con = Conexao.pegarConexao();
+            
+            p = con.prepareStatement("delete from clientes where id = ?");
+                        
+            p.setInt(1, this.id);
+           
+            p.execute();           
+            p.close();
+            con.close();
+        } catch (Exception ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 
     /**
