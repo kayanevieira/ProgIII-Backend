@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <img src="./icons/pizza.png" id="logo-img" />
+      </header>
+      <div class="menu-lateral">
+        <div id="menu-links">
+          <img src="./icons/botao-home.png" class="menu-icones" />
+          <a href="index.html">Home</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/pessoas.png" class="menu-icones" />
+          <a href="./cadastro-usuario.html">Cadastro de usuário</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/pessoas.png" class="menu-icones" />
+          <a href="./cadastro-cliente.html">Cadastro de cliente</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="./cadastro-produto.html">Cadastro de produto</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="./cadastro-pedido.html">Cadastro de pedido</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="pesquisa.html">Pesquisa</a>
+        </div>
+      </div>
+      <div>
+        <h1>Cadastro de usuário</h1>
+        <hr id="hr-form" />
+      </div>
+      <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" required />
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required />
+
+        <label for="whats">Whatsapp:</label>
+        <input type="tel" id="whats" name="whats" required />
+
+        <div class="buttons">
+          <input type="submit" value="Salvar" id="salvar" />
+          <input type="submit" value="Cancelar" id="cancelar" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

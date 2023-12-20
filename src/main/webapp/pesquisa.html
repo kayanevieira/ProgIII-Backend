@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <img src="./icons/pizza.png" id="logo-img" />
+      </header>
+
+      <div class="menu-lateral">
+        <div id="menu-links">
+          <img src="./icons/botao-home.png" class="menu-icones" />
+          <a href="index.html">Home</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/pessoas.png" class="menu-icones" />
+          <a href="./cadastro-usuario.html">Cadastro de usuário</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/pessoas.png" class="menu-icones" />
+          <a href="./cadastro-cliente.html">Cadastro de cliente</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="./cadastro-produto.html">Cadastro de produto</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="./cadastro-pedido.html">Cadastro de pedido</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+          <a href="pesquisa.html">Pesquisa</a>
+        </div>
+      </div>
+
+      <div>
+        <h1>Pesquisa</h1>
+        <hr id="hr-form" />
+      </div>
+
+      <form class="filtroGeral">
+        <label for="nome">Filtro:</label>
+        <div id="campoFiltro">
+          <input type="text" id="filtro" name="filtro" required />
+        </div>
+        <div class="botaoFiltro">
+          <input type="submit" value="Filtrar" />
+        </div>
+      </form>
+
+      <div id="buttons-pesquisa">
+        <a href="./cadastro-usuario.html"
+          ><input type="submit" value="Inserir" class="input-filter"
+        /></a>
+        <a href="./cadastro-usuario.html"
+          ><input type="submit" value="Atualizar" class="input-filter"
+        /></a>
+        <a href="./cadastro-usuario.html"
+          ><input type="submit" value="Excluir" class="input-filter"
+        /></a>
+      </div>
+
+      <div id="resultadoPesquisa">
+        <div id="tabela">
+          <table id="tabelaResultado">
+            <tr id="menu">
+              <th>Seleção</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Data de Nascimento</th>
+              <th>Telefone</th>
+            </tr>
+            <tr id="linha 1">
+              <td>
+                <input
+                  type="checkbox"
+                  id="seleciona"
+                  name="seleciona"
+                  required
+                />
+              </td>
+              <td>primeiros dados</td>
+              <td>primeiros dados</td>
+              <td>primeiros dados</td>
+              <td>primeiros dados</td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="checkbox"
+                  id="seleciona"
+                  name="seleciona"
+                  required
+                />
+              </td>
+              <td>segunudos dados</td>
+              <td>segunudos dados</td>
+              <td>segunudos dados</td>
+              <td>segunudos dados</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

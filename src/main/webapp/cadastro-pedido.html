@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <img src="./icons/pizza.png" id="logo-img" />
+      </header>
+      <div class="menu-lateral">
+        <div id="menu-links">
+          <img src="./icons/botao-home.png" class="menu-icones" />
+          <a href="index.html">Home</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/pessoas.png" class="menu-icones" />
+          <a href="./cadastro-usuario.html">Cadastro de usuário</a>
+        </div>
+        <div id="menu-links">
+          <img src="./icons/hospital.png" class="menu-icones" />
+          <a href="./cadastro-cliente.html">Cadastro de cliente</a>
+        </div>
+        <div id="menu-links">
+            <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+            <a href="./cadastro-produto.html">Cadastro de produto</a>
+          </div>
+          <div id="menu-links">
+            <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+            <a href="./cadastro-pedido.html">Cadastro de pedido</a>
+          </div>
+          <div id="menu-links">
+            <img src="./icons/icone-pizza-menu.png" class="menu-icones" />
+            <a href="pesquisa.html">Pesquisa</a>
+          </div>
+      </div>
+      <div>
+        <h1>Cadastro de pedido</h1>
+        <hr id="hr-form" />
+      </div>
+      <form>
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required />
+
+        <label for="emissao">Data de emissão:</label>
+        <input type="text" id="emissao" name="emissao" required />
+
+        <label for="frete">Valor do frete:</label>
+        <input type="text" id="frete" name="frete" required />
+
+        <label for="entrega">Data da entrega:</label>
+        <input type="text" id="entrega" name="entrega" required />
+
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required />
+
+        <div class="buttons">
+          <input type="submit" value="Salvar" id="salvar" />
+          <input type="submit" value="Cancelar" id="cancelar" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    background-color: white;
+}
+
+header {
+    background-color: #f8cb00;
+    width: 100%;
+    height: 110px;
+    position: relative;
+}
+
+h1 {
+    margin-top: 30px;
+    margin-left: 20%;
+    font-family: Verdana;
+    font-size: 24px;
+    color: rgb(65, 64, 64);
+}
+
+hr {
+    border-color: rgb(255, 255, 255);
+    margin-top: 25px;
+}
+
+.menu-lateral {
+    background-color: #fc655a;
+    width: 14%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-lateral a {
+    padding: 6px;
+    margin-left: 20px;
+    margin-top: 30px;
+    font-family: Verdana;
+    text-decoration: none;
+    color: black;
+    font-style: bold;
+}
+
+.menu-lateral a:hover {
+    color: #fbff14;
+}
+
+.menu-icones {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+    margin-top: 30px;
+}
+
+#menu-links {
+    display: flex;
+    flex-direction: row;
+}
+
+#logo-img {
+    position: absolute;
+    z-index: 1;
+    width: 80px;
+    height: 82px;
+    left: 60px;
+    top: 16px;
+}
+
+  form {
+    margin-top: 50px;
+    width: 40%;
+    padding: 100px;
+    margin-top: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  input[type="tel"]{
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+ #salvar, #cancelar{
+    background-color: #fc655a;
+    width: calc(40% - 20px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #fc655a;
+  }
+  
+  hr{
+    margin-bottom: 50px;
+  }
+
+  #image2-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  #image1{
+    margin-left: 60px;
+    width: 20%;
+    margin-left: 20%;
+    max-width: 300px;
+    background-image: url('./img/sistema-hospitalar.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden; 
+  }
+
+  #image2{
+    margin-left: 80px;
+    max-width: 500px;
+    background-image: url('./img/sistema-hospitalar.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden; 
+  }
+
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    font-size: 12pt;
+}
+
+#first-p{
+    max-width: 800px;
+    margin-left: 20%;
+}
+
+#second-p{
+    max-width: 700px;
+    margin-left: 20%;
+}
+
+.filtroGeral {
+    margin-top: -50px;
+    width: 55%;
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-bottom: 60px;
+    margin-left: 16%;
+}
+  
+#campoFiltro {
+    float: left;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.filtroGeral input[type="submit"] {
+    background-color: white;
+    width: calc(15% - 20px);
+    border: 1px solid #1aca1a;
+    color: #1aca1a;
+    float: right;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+  .filtroGeral input[type="submit"]:hover {
+    background-color: #1aca1a;
+    color:white;
+}
+
+#resultadoPesquisa{
+    width: 50%;
+    margin-left: 21%;
+}
+
+#resultadoPesquisa .buttons{
+    width: 35%;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#buttons-pesquisa{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20%;
+    margin-top: 15px;
+}
+
+.input-filter{
+    width: 100px;
+    background-color: #fc655a;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#tabela{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#tabela table{
+    width: 100%;
+    border-collapse: collapse;
+    color: black;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+#tabela th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+#confPrincipal{
+  width: 70%;
+  margin-left: 18%;
+}
+#confPrincipal h1{
+  margin-left: 0px;
+  margin-top: 0px;
+  font-size: 35px;
+}
+#voltar{
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  
+}
+
+#confPrincipal p{
+  margin-left: 0px;
+  margin-top: 50px;
+}
+
+#confPrincipal input[type="submit"]{
+  width: 15%;
+}
+
+th, td{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+label{
+    align-self: center;
+}
+
+.input-form{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+}
