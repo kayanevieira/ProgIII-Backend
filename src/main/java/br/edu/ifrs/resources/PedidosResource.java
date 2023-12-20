@@ -79,8 +79,46 @@ public class PedidosResource {
      * PUT method for updating or creating an instance of PedidosResource
      * @param content representation for the resource
      */
+    @Path("inserir")
     @PUT
     @Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
-    public void putJson(String content) {
+    public void inserir(String content) {
+        Gson g = new Gson();
+        
+        Pedidos p = g.fromJson(content, Pedidos.class);
+        try {
+            p.inserir();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    @Path("atualizar")
+    @PUT
+    @Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    public void atualizar(String content) {
+        Gson g = new Gson();
+        
+        Pedidos p = g.fromJson(content, Pedidos.class);
+        try {
+            p.atualizar();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    @Path("excluir")
+    @PUT
+    @Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    public void excluir(String content) {
+        Gson g = new Gson();
+        
+        Pedidos p = g.fromJson(content, Pedidos.class);
+        try {
+            p.excluir();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
+

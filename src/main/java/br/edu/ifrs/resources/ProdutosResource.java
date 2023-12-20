@@ -4,7 +4,7 @@
  */
 package br.edu.ifrs.resources;
 
-import br.edu.ifrs.modelo.Clientes;
+import br.edu.ifrs.modelo.Produtos;
 import com.google.gson.Gson;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.UriInfo;
@@ -21,24 +21,23 @@ import jakarta.ws.rs.PathParam;
  *
  * @author norton.wolff
  */
-@Path("Clientes")
+@Path("Produtos")
 @RequestScoped
-public class ClientesResource {
+public class ProdutosResource {
 
     @Context
     private UriInfo context;
 
     /**
-     * Creates a new instance of ClientesResource
+     * Creates a new instance of ProdutosResource
      */
-    public ClientesResource() {
+    public ProdutosResource() {
     }
 
     /**
-     * Retrieves representation of an instance of br.edu.ifrs.resources.ClientesResource
+     * Retrieves representation of an instance of br.edu.ifrs.resources.ProdutosResource
      * @return an instance of java.lang.String
      */
-    
     @Path("all")
     @GET
     @Produces(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
@@ -46,39 +45,38 @@ public class ClientesResource {
         //TODO return proper representation object
         Gson g = new Gson();
         
-        Clientes clientes[];
+        Produtos produtos[];
         
         try {
-            Clientes c = new Clientes();
-            clientes = c.selecionar();
+            Produtos p = new Produtos();
+            produtos = p.selecionar();
         } catch (Exception e){
-            clientes = new Clientes[0];
+            produtos = new Produtos[0];
         }
         
-        return g.toJson(clientes);
+        return g.toJson(produtos);
     }
-    
     
     @Path("{id}")
     @GET
     @Produces(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
-    public String getClienteById(@PathParam("id") int id) {
+    public String getPedidoById(@PathParam("id") int id) {
         Gson g = new Gson();
         
-        Clientes c = new Clientes();
-        c.setId(id);
+        Produtos p = new Produtos();
+        p.setId(id);
         
         try{
-            c.selecionarId();
+            p.selecionarId();
         } catch (Exception e){
-            c = new Clientes();
+            p = new Produtos();
         }
         
-        return g.toJson(c);
+        return g.toJson(p);
     }
 
     /**
-     * PUT method for updating or creating an instance of ClientesResource
+     * PUT method for updating or creating an instance of ProdutosResource
      * @param content representation for the resource
      */
     @Path("inserir")
@@ -87,9 +85,9 @@ public class ClientesResource {
     public void inserir(String content) {
         Gson g = new Gson();
         
-        Clientes c = g.fromJson(content, Clientes.class);
+        Produtos p = g.fromJson(content, Produtos.class);
         try {
-            c.inserir();
+            p.inserir();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -101,9 +99,9 @@ public class ClientesResource {
     public void atualizar(String content) {
         Gson g = new Gson();
         
-        Clientes c = g.fromJson(content, Clientes.class);
+        Produtos p = g.fromJson(content, Produtos.class);
         try {
-            c.atualizar();
+            p.atualizar();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -115,12 +113,11 @@ public class ClientesResource {
     public void excluir(String content) {
         Gson g = new Gson();
         
-        Clientes c = g.fromJson(content, Clientes.class);
+        Produtos p = g.fromJson(content, Produtos.class);
         try {
-            c.excluir();
+            p.excluir();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
 }
-
