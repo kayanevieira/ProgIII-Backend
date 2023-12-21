@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,20 +24,23 @@ public class Pedidos {
     private float valor_frete;
     private Date data_entrega;
     private int clientes_id;
-
-    public Pedidos(int numero, Date data_emissao, float valor_frete, int clientes_id) {
+    private Produtos produto;
+    
+    public Pedidos(int numero, Date data_emissao, float valor_frete, int clientes_id, Produtos produto) {
         this.numero = numero;
         this.data_emissao = data_emissao;
         this.valor_frete = valor_frete;
         this.clientes_id = clientes_id;
+        this.produto = produto;
     }
 
-    public Pedidos(int numero, Date data_emissao, float valor_frete, Date data_entrega, int clientes_id) {
+    public Pedidos(int numero, Date data_emissao, float valor_frete, Date data_entrega, int clientes_id, Produtos produto) {
         this.numero = numero;
         this.data_emissao = data_emissao;
         this.valor_frete = valor_frete;
         this.data_entrega = data_entrega;
         this.clientes_id = clientes_id;
+        this.produto = produto;
     }
     
     public Pedidos(){
@@ -51,7 +55,7 @@ public class Pedidos {
             con = Conexao.pegarConexao();
             
             p = con.prepareStatement("insert into pedidos(numero, data_emissao, valor_frete, "
-                    + "data_entrega, clientes_id) values (?, ?, ?, ?, ?)");
+                    + "data_entrega, clientes_id) values (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
                         
             p.setInt(1, this.numero);
             p.setDate(2, this.data_emissao);
@@ -61,6 +65,22 @@ public class Pedidos {
             
             
             p.execute();
+            
+            ResultSet resultSet = p.getGeneratedKeys();
+            if(resultSet.next()){
+                // Inserir os produtos associados ao pedido na tabela PedidosHasProdutos
+                p = con.prepareStatement("insert into produtos_has_pedidos(produtos_id, pedidos_numero, quantidade,"
+                        + "preco_unitario, unidade) values (?, ?, ?, ?, ?)");
+
+                p.setInt(1, this.produto.getId());
+                p.setInt(2, this.numero);
+                p.setInt(3, 1);
+                p.setFloat(4,this.produto.getPreco_unitario());
+                p.setString(5,this.produto.getUnidade());
+
+                p.executeUpdate();
+            }
+            
         } catch(Exception e){
             throw new Exception("Falha ao executar o comando.");
         } finally {

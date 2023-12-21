@@ -23,12 +23,13 @@ public class Produtos {
     private String descricao;
     private String unidade;
     private float preco_unitario;
-
+    
     public Produtos(String nome, String unidade, float preco_unitario) {
         this.nome = nome;
         this.descricao = "";
         this.unidade = unidade;
         this.preco_unitario = preco_unitario;
+        
     }
 
     public Produtos(int id, String nome, String descricao, String unidade, float preco_unitario) {
