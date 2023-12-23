@@ -85,7 +85,7 @@ public class Clientes {
             p = con.prepareStatement("insert into clientes(nome, data_nascimento, cpf, "
                     + "rg, orgao_emissor, sexo, email, telefone, whats, logradouro,"
                     + "numero, bairro, cidade, estado, cep) values (?, ?, ?, "
-                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                         
             p.setString(1, this.nome);
             p.setInt(2, this.data_nascimento);
@@ -105,7 +105,7 @@ public class Clientes {
             
             p.execute();
         } catch(Exception e){
-            throw new Exception("Falha ao executar o comando.");
+            throw new Exception("Falha ao executar o comando.", e);
         } finally {
             if(p != null) p.close();
             if(con != null) con.close();

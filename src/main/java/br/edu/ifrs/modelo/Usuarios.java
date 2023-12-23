@@ -18,39 +18,23 @@ import java.util.logging.Logger;
  * @author nxrtxn
  */
 public class Usuarios {
-    private String cpf;
     private String nome;
-    private Date data_nascimento;
+    private String data_nascimento;
+    private String cpf;
     private String email;
     private String telefone;
-    private int whats;
+    private byte whats;
     private String username;
     private String senha;
 
-    public Usuarios(String cpf, String nome, String email, String username, String senha) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.data_nascimento = new Date(0,0,0);
-        this.email = email;
+    public Usuarios() {
+        this.nome = "";
+        this.data_nascimento = "";
+        this.cpf = "";
+        this.email = "";
         this.telefone = "";
-        this.whats = 0;
-        this.username = username;
-        this.senha = senha;
-    }
-
-    public Usuarios(String cpf, String nome, Date data_nascimento, String email, String telefone, int whats, String username, String senha) {
-        this.cpf = cpf;
-        this.nome = nome;
-        this.data_nascimento = data_nascimento;
-        this.email = email;
-        this.telefone = telefone;
-        this.whats = whats;
-        this.username = username;
-        this.senha = senha;
-    }
-    
-    public Usuarios(){
-        
+        this.username = "";
+        this.senha = "";
     }
     
     public void inserir() throws Exception{
@@ -60,13 +44,13 @@ public class Usuarios {
         try{
             con = Conexao.pegarConexao();
             
-            p = con.prepareStatement("insert into usuarios(cpf, nome, data_nascimento, "
-                    + "email, telefone, whats, username, senha) values (?, ?, ?, "
+            p = con.prepareStatement("insert into usuarios(cpf,nome,data_nascimento,"
+                    + "email,telefone,whats,username,senha) values (?, ?, ?, "
                     + "?, ?, ?, ?, ?)");
             
             p.setString(1, this.cpf);
             p.setString(2, this.nome);
-            p.setDate(3, this.data_nascimento);
+            p.setString(3, this.data_nascimento);
             p.setString(4, this.email);
             p.setString(5, this.telefone);
             p.setInt(6, this.whats);
@@ -75,7 +59,7 @@ public class Usuarios {
                       
             p.execute();
         } catch(Exception e){
-            throw new Exception("Falha ao executar o comando.");
+            throw new Exception("Falha ao executar o comando.", e);
         } finally {
             if(p != null) p.close();
             if(con != null) con.close();
@@ -94,7 +78,7 @@ public class Usuarios {
                    
             
             p.setString(1, this.nome);
-            p.setDate(2, this.data_nascimento);
+            p.setString(2, this.data_nascimento);
             p.setString(3, this.email);
             p.setString(4, this.telefone);
             p.setInt(5, this.whats);
@@ -128,10 +112,10 @@ public class Usuarios {
                                 
                 u.setCpf(rs.getString("cpf"));
                 u.setNome(rs.getString("nome"));
-                u.setData_nascimento(rs.getDate("data_nascimento"));
+                u.setData_nascimento(rs.getString("data_nascimento"));
                 u.setEmail(rs.getString("email"));
                 u.setTelefone(rs.getString("telefone"));
-                u.setWhats(rs.getInt("whats"));
+                u.setWhats(rs.getByte("whats"));
                 u.setUsername(rs.getString("username"));
                 u.setSenha(rs.getString("senha"));
                                 
@@ -159,10 +143,10 @@ public class Usuarios {
             if (rs.next()) {
                 this.setCpf(rs.getString("cpf"));
                 this.setNome(rs.getString("nome"));
-                this.setData_nascimento(rs.getDate("data_nascimento"));
+                this.setData_nascimento(rs.getString("data_nascimento"));
                 this.setEmail(rs.getString("email"));
                 this.setTelefone(rs.getString("telefone"));
-                this.setWhats(rs.getInt("whats"));
+                this.setWhats(rs.getByte("whats"));
                 this.setUsername(rs.getString("username"));
                 this.setSenha(rs.getString("senha"));  
             }
@@ -227,14 +211,14 @@ public class Usuarios {
     /**
      * @return the data_nascimento
      */
-    public Date getData_nascimento() {
+    public String getData_nascimento() {
         return data_nascimento;
     }
 
     /**
      * @param data_nascimento the data_nascimento to set
      */
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(String data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
@@ -276,7 +260,7 @@ public class Usuarios {
     /**
      * @param whats the whats to set
      */
-    public void setWhats(int whats) {
+    public void setWhats(byte whats) {
         this.whats = whats;
     }
 
