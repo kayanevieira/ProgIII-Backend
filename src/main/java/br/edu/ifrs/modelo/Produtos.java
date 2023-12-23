@@ -51,14 +51,14 @@ public class Produtos {
         try{
             con = Conexao.pegarConexao();
             
-            p = con.prepareStatement("insert into produtos(id, nome, descricao, "
-                    + "unidade, preco_unitario) values (?, ?, ?, ?, ?)");
+            p = con.prepareStatement("insert into produtos( nome, descricao, "
+                    + "unidade, preco_unitario) values ( ?, ?, ?, ?)");
                         
-            p.setInt(1, this.id);
-            p.setString(2, this.nome);
-            p.setString(3, this.descricao);
-            p.setString(4, this.unidade);
-            p.setFloat(5, this.preco_unitario);
+            
+            p.setString(1, this.nome);
+            p.setString(2, this.descricao);
+            p.setString(3, this.unidade);
+            p.setFloat(4, this.preco_unitario);
             
             
             p.execute();

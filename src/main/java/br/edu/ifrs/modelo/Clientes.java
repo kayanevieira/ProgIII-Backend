@@ -52,8 +52,8 @@ public class Clientes {
         this.cep = "";
     }
 
-    public Clientes(int id, String nome, int data_nascimento, String cpf, String rg, String orgao_emissor, String sexo, String email, String telefone, int whats, String logradouro, String numero, String bairro, String cidade, String estado, String cep) {
-        this.id = id;
+    public Clientes(String nome, int data_nascimento, String cpf, String rg, String orgao_emissor, String sexo, String email, String telefone, int whats, String logradouro, String numero, String bairro, String cidade, String estado, String cep) {
+        
         this.nome = nome;
         this.data_nascimento = data_nascimento;
         this.cpf = cpf;
@@ -163,6 +163,7 @@ public class Clientes {
             while(rs.next()){
                 Clientes c = new Clientes();
                 
+                c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setData_nascimento(rs.getInt("data_nascimento"));
                 c.setCpf(rs.getString("cpf"));
